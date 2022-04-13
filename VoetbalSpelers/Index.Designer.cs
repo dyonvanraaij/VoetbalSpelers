@@ -36,10 +36,10 @@ namespace VoetbalSpelers
             this.add_stats = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.position_input = new System.Windows.Forms.TextBox();
             this.teamname_input = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.position_inputbox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // listBox
@@ -105,17 +105,11 @@ namespace VoetbalSpelers
             this.label2.TabIndex = 6;
             this.label2.Text = "*Lastname:";
             // 
-            // position_input
-            // 
-            this.position_input.Location = new System.Drawing.Point(139, 108);
-            this.position_input.Name = "position_input";
-            this.position_input.Size = new System.Drawing.Size(100, 22);
-            this.position_input.TabIndex = 7;
-            // 
             // teamname_input
             // 
             this.teamname_input.Location = new System.Drawing.Point(139, 137);
             this.teamname_input.Name = "teamname_input";
+            this.teamname_input.ReadOnly = true;
             this.teamname_input.Size = new System.Drawing.Size(100, 22);
             this.teamname_input.TabIndex = 8;
             // 
@@ -137,15 +131,28 @@ namespace VoetbalSpelers
             this.label4.TabIndex = 10;
             this.label4.Text = "Teamname";
             // 
+            // position_inputbox
+            // 
+            this.position_inputbox.FormattingEnabled = true;
+            this.position_inputbox.Items.AddRange(new object[] {
+            "keeper",
+            "defend",
+            "midfield",
+            "attack"});
+            this.position_inputbox.Location = new System.Drawing.Point(139, 108);
+            this.position_inputbox.Name = "position_inputbox";
+            this.position_inputbox.Size = new System.Drawing.Size(121, 24);
+            this.position_inputbox.TabIndex = 11;
+            // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.position_inputbox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.teamname_input);
-            this.Controls.Add(this.position_input);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.add_stats);
@@ -169,10 +176,10 @@ namespace VoetbalSpelers
         private System.Windows.Forms.Button add_stats;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox position_input;
         private System.Windows.Forms.TextBox teamname_input;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox position_inputbox;
     }
 }
 

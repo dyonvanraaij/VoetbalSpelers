@@ -22,15 +22,7 @@ namespace VoetbalSpelers
                 spelers = db.GetSpelers();
                 foreach (var st in spelers)
                 {
-                    listBox.Items.Add(st.Firstname + " " + st.Lastname + ", " + st.Position);
-                }
-            }
-            int count = listBox.Items.Count;
-            for (int i = count - 1; i >= 0; i--)
-            {
-                if (listBox.Items[i].ToString() == " ")
-                {
-                    listBox.Items.RemoveAt(i);
+                    listBox.Items.Add(st.Firstname + "," + st.Lastname + "," + st.Position);
                 }
             }
         }
@@ -50,22 +42,21 @@ namespace VoetbalSpelers
             {
                 string firstname = firstname_input.Text;
                 string lastname = lastname_input.Text;
-                string position = position_input.Text;
+                string position = position_inputbox.Text.ToString();
                 string teamname = teamname_input.Text;
 
                 if (firstname == "" || lastname == "" || position == "")
                 {
-                    MessageBox.Show("Vul alle velden in");
+                    MessageBox.Show("Vul alle velden correct in");
                 }
                 else
                 {
                     Database db = new Database();
-                    Player player = new Player(firstname, lastname, position, teamname);
-                    db.AddPlayer(player);
-                    listBox.Items.Add(player.Firstname + " " + player.Lastname + ", " + player.Position);
+                    db.AddPlayer(firstname, lastname, position, teamname);
+                    listBox.Items.Add(firstname + "," + lastname + "," + position);
                     firstname_input.Text = "";
                     lastname_input.Text = "";
-                    position_input.Text = "";
+                    position_inputbox.Text = "";
                     teamname_input.Text = "";
                     MessageBox.Show("Speler toegevoegd");
                 }
@@ -78,10 +69,16 @@ namespace VoetbalSpelers
 
         private void add_stats_Click(object sender, EventArgs e)
         {
-            string item = listBox.SelectedItem.ToString();
-            AddStats f2 = new AddStats(item);
-            f2.Show();
-            //this.Close();
+            Database db = new Database();
+            if (db.IsConnect())
+            {
+                string item = listBox.SelectedItem.ToString();
+                string[] words = item.Split(',');
+                Player player = db.GetPlayerFromNameAndPosition(words[0], words[1], words[2]);
+
+                AddStats f3 = new AddStats(player);
+                f3.Show();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
