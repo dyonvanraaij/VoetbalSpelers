@@ -1,0 +1,89 @@
+﻿@model Tuple<Player, Stats>
+
+    @{
+        ViewData["Title"] = "Details";
+    }
+
+    <h1>Details</h1>
+
+    <div>
+        <h4>PlayerStats</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                Player name
+            </dt>
+            <dd class="col-sm-10">
+                @Model.Item1.Firstname @Model.Item1.Lastname
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Player_id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Player_id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Injury)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Injury)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Yellow)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Yellow)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Red)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Red)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Training)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Training)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Goals)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Goals)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Assists)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Assists)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Caused)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Caused)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Keeper_clean)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Keeper_clean)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Penal_held)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Penal_held)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Item2.Penal_created)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Item2.Penal_created)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a href="javascript:void(0);" onclick="history.go(-1);">Back to players</a>
+    </div>

@@ -1,0 +1,14 @@
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\obj\Debug\net5.0\Dal.csproj.AssemblyReference.cache
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\obj\Debug\net5.0\Dal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\obj\Debug\net5.0\Dal.AssemblyInfoInputs.cache
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\obj\Debug\net5.0\Dal.AssemblyInfo.cs
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\obj\Debug\net5.0\Dal.csproj.CoreCompileInputs.cache
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\bin\Debug\net5.0\Dal.deps.json
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\bin\Debug\net5.0\Dal.dll
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\bin\Debug\net5.0\ref\Dal.dll
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\bin\Debug\net5.0\Dal.pdb
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\bin\Debug\net5.0\MySql.Data.DLL
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\obj\Debug\net5.0\Dal.csproj.CopyComplete
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\obj\Debug\net5.0\Dal.dll
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\obj\Debug\net5.0\ref\Dal.dll
+C:\Users\dyonv\source\repos\VoetbalSpelers\Dal\obj\Debug\net5.0\Dal.pdb

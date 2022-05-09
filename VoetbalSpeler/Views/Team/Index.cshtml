@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Team>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Choose Team</h1>
+
+<p>
+    @Html.ActionLink("Create new Team", "Create", "Team")
+</p>
+<p>
+    @Html.ActionLink("Create new Coach", "Create", "Coach")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teamname)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.CoachName)
+            </th>*@
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teamname)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.CoachName)
+            </td>*@
+        <td>
+            @Html.ActionLink("Select", "Index", "Player", new { id = item.Id }, null) |
+            @Html.ActionLink("Edit", "Edit", "Team", new { id = item.Id }, null)
+        </td>
+        </tr>
+}
+    </tbody>
+</table>

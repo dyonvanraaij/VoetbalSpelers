@@ -1,0 +1,16 @@
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\bin\Debug\net5.0\VoetbalSpelersBusiness.deps.json
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\bin\Debug\net5.0\VoetbalSpelersBusiness.dll
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\bin\Debug\net5.0\ref\VoetbalSpelersBusiness.dll
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\bin\Debug\net5.0\VoetbalSpelersBusiness.pdb
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\obj\Debug\net5.0\VoetbalSpelersBusiness.csproj.AssemblyReference.cache
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\obj\Debug\net5.0\VoetbalSpelersBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\obj\Debug\net5.0\VoetbalSpelersBusiness.AssemblyInfoInputs.cache
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\obj\Debug\net5.0\VoetbalSpelersBusiness.AssemblyInfo.cs
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\obj\Debug\net5.0\VoetbalSpelersBusiness.csproj.CoreCompileInputs.cache
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\obj\Debug\net5.0\VoetbalSpelersBusiness.dll
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\obj\Debug\net5.0\ref\VoetbalSpelersBusiness.dll
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\obj\Debug\net5.0\VoetbalSpelersBusiness.pdb
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\bin\Debug\net5.0\Dal.dll
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\bin\Debug\net5.0\MySql.Data.dll
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\bin\Debug\net5.0\Dal.pdb
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpelersBusiness\obj\Debug\net5.0\VoetbalSpelersBusiness.csproj.CopyComplete

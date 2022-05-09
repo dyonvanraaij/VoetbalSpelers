@@ -1,0 +1,82 @@
+﻿@model Tuple<Player, Stats>
+
+@{
+    ViewData["Title"] = "Create/Update Stats";
+}
+
+<h1>Create/Update</h1>
+
+<h4>Stats</h4>
+<p>New stats will be added to the old stats. Injury en Training commitment will be overwritten.</p>
+<p>Player: @Model.Item1.Firstname @Model.Item1.Lastname</p>
+<hr />
+<form asp-action="Edit">
+    <div class="row">
+        <div class="col-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Item2.Injury" /> @Html.DisplayNameFor(model => model.Item2.Injury)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item2.Yellow" class="control-label"></label>
+                <input asp-for="Item2.Yellow" class="form-control" />
+                <span asp-validation-for="Item2.Yellow" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item2.Red" class="control-label"></label>
+                <input asp-for="Item2.Red" class="form-control" />
+                <span asp-validation-for="Item2.Red" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item2.Training" class="control-label"></label>
+                <input asp-for="Item2.Training" class="form-control" />
+                <span asp-validation-for="Item2.Training" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item2.Goals" class="control-label"></label>
+                <input asp-for="Item2.Goals" class="form-control" />
+                <span asp-validation-for="Item2.Goals" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label asp-for="Item2.Assists" class="control-label"></label>
+                <input asp-for="Item2.Assists" class="form-control" />
+                <span asp-validation-for="Item2.Assists" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item2.Caused" class="control-label"></label>
+                <input asp-for="Item2.Caused" class="form-control" />
+                <span asp-validation-for="Item2.Caused" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item2.Keeper_clean" class="control-label"></label>
+                <input asp-for="Item2.Keeper_clean" class="form-control" />
+                <span asp-validation-for="Item2.Keeper_clean" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item2.Penal_held" class="control-label"></label>
+                <input asp-for="Item2.Penal_held" class="form-control" />
+                <span asp-validation-for="Item2.Penal_held" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item2.Penal_created" class="control-label"></label>
+                <input asp-for="Item2.Penal_created" class="form-control" />
+                <span asp-validation-for="Item2.Penal_created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a href="javascript:void(0);" onclick="history.go(-1);">Back to players</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

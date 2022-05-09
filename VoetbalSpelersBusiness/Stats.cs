@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dal;
+using Dal.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,7 @@ namespace VoetbalSpelersBusiness
 
         public int Player_id
         {
+            set { player_id = value; }
             get { return player_id; }
         }
         public bool Injury
@@ -36,6 +39,7 @@ namespace VoetbalSpelersBusiness
         {
             get { return red; }
         }
+
         public int Training
         {
             get { return training; }
@@ -78,6 +82,21 @@ namespace VoetbalSpelersBusiness
             this.keeper_clean = keeper_clean;
             this.penal_held = penal_held;
             this.penal_created = penal_created;
+        }
+        public StatsDTO AddStats(Stats stats)
+        {
+            StatsDTO statsDTO = new(stats.Player_id, stats.Goals, stats.Assists, stats.Injury, stats.Keeper_clean, stats.Yellow, stats.Red, stats.Penal_held, stats.Penal_created,
+                stats.Training, stats.Caused);
+            StatsDTO add = new StatsData().AddStats(statsDTO);
+            return add;
+        }
+
+        public StatsDTO UpdateStats(Stats stats)
+        {
+            StatsDTO statsDTO = new(stats.Player_id, stats.Goals, stats.Assists, stats.Injury, stats.Keeper_clean, stats.Yellow, stats.Red, stats.Penal_held, stats.Penal_created,
+                stats.Training, stats.Caused);
+            StatsDTO add = new StatsData().UpdateStats(statsDTO);
+            return add;
         }
     }
 

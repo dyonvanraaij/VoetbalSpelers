@@ -1,0 +1,60 @@
+﻿@model Tuple<List<Player>,Team>
+
+@{
+    ViewData["Title"] = "Team Players";
+}
+
+<h1>Players</h1>
+
+<p>
+    @Html.ActionLink("Create", "Edit", "Player", new { id = @Model.Item2.Id }, null)
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Firstname
+            </th>
+            <th>
+                Lastname
+            </th>
+            <th>
+                Position
+            </th>
+            <th>
+                TeamId
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Item1)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Model.Item2.Teamname
+                </td>
+                <td>
+                    @Html.ActionLink("Stats Details", "Details", "PlayerStats", new { id = item.Id }, null) |
+                    @Html.ActionLink("Add Stats", "Edit", "PlayerStats", new { id = item.Id }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="javascript:void(0);" onclick="history.go(-1);">Back</a>
