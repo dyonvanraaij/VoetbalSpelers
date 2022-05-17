@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace VoetbalSpelersBusiness
 {
-    public class Player
+    public class Player : IPlayer
     {
         private int id;
         private string firstname;
@@ -44,6 +44,9 @@ namespace VoetbalSpelersBusiness
             set { teamname = value; }
             get { return teamname; }
         }
+
+        object IPlayer.Teamname => throw new NotImplementedException();
+
         public Player(int id, string firstname, string lastname, string position, int teamname)
         {
             this.id = id;
@@ -65,6 +68,21 @@ namespace VoetbalSpelersBusiness
                 Stats temp = new Stats(0, 0, 0, false, 0, 0, 0, 0, 0, 0, 0);
                 return temp;
             }
+        }
+        public StatsDTO AddStats(Stats stats)
+        {
+            StatsDTO statsDTO = new(stats.Player_id, stats.Goals, stats.Assists, stats.Injury, stats.Keeper_clean, stats.Yellow, stats.Red, stats.Penal_held, stats.Penal_created,
+                stats.Training, stats.Caused);
+            StatsDTO add = new StatsData().AddStats(statsDTO);
+            return add;
+        }
+
+        public StatsDTO UpdateStats(Stats stats)
+        {
+            StatsDTO statsDTO = new(stats.Player_id, stats.Goals, stats.Assists, stats.Injury, stats.Keeper_clean, stats.Yellow, stats.Red, stats.Penal_held, stats.Penal_created,
+                stats.Training, stats.Caused);
+            StatsDTO add = new StatsData().UpdateStats(statsDTO);
+            return add;
         }
     }
 

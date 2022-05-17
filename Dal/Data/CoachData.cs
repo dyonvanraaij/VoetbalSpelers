@@ -8,20 +8,14 @@ using System.Threading.Tasks;
 
 namespace Dal.Data
 {
-    public class CoachData
+    public class CoachData : Database
     {
-        public Database _dbase;
-        public CoachData()
-        {
-            _dbase = new Database();
-        }
-
         public void CreateCoach(CoachDTO coach)
         {
-            if (_dbase.IsConnect())
+            if (IsConnect())
             {
                 string query = "INSERT INTO coach(firstname, lastname) VALUES (@firstname, @lastname)";
-                MySqlCommand cmd = new MySqlCommand(query, _dbase.connection);
+                MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@firstname", coach.GetFirstname());
                 cmd.Parameters.AddWithValue("@lastname", coach.GetLastname());
 
@@ -29,7 +23,7 @@ namespace Dal.Data
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 reader.Close();
-                _dbase.Close();
+                Close();
             }
         }
     }

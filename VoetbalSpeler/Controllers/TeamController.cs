@@ -13,8 +13,8 @@ namespace VoetbalSpeler.Controllers
         // GET: TeamController
         public ActionResult Index()
         {
-            Club ijfc = new Club("ijfc");
-            List<Team> teams = ijfc.GetTeams();
+            IClub club = new Club("ijfc");
+            List<Team> teams = club.GetTeams();
             return View(teams);
         }
 
@@ -31,11 +31,14 @@ namespace VoetbalSpeler.Controllers
         {
             try
             {
-                Club ijfc = new("ijfc");
+                IClub club = new Club("ijfc");
+
                 string teamname = Convert.ToString(collection["Teamname"]);
                 int coach_id = Int32.Parse(collection["CoachId"]);
                 Team team = new(0, teamname, coach_id);
-                ijfc.Create(team);
+
+                club.Create(team);
+
                 return View();
             }
             catch

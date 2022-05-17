@@ -8,21 +8,17 @@ using System.Threading.Tasks;
 
 namespace Dal
 {
-    public class StatsData
+    public class StatsData : Database
     {
-        public Database _dbase;
-        public StatsData()
-        {
-            _dbase = new Database();
-        }
+      
         public StatsDTO GetStatsByPlayerId(int player_id)
         {
             StatsDTO st = null;
-            if (_dbase.IsConnect())
+            if (IsConnect())
             {
                 MySqlCommand cmd = new MySqlCommand(
                     "SELECT * FROM player_stats Where player_id=@player_id LIMIT 1",
-                    _dbase.connection);
+                    connection);
                 cmd.Parameters.AddWithValue("@player_id", player_id);
                 cmd.Prepare();
 
@@ -43,20 +39,20 @@ namespace Dal
                         penalties_created_defence, training_commitment, caused_offside);
                 }
                 reader.Close();
-                _dbase.Close();
+                Close();
             }
             return st;
         }
 
         public StatsDTO AddStats(StatsDTO stats)
         {
-            if (_dbase.IsConnect())
+            if (IsConnect())
             {
                 MySqlCommand cmd = new MySqlCommand(
                     "INSERT INTO player_stats(player_id, injury, yellow_carts, red_carts, training_commitment, " +
                     "goals_scored, assists_given, caused_offside, keeper_clean_sheet, penalties_created_defence, penalties_held) VALUES " +
                     "(@player_id, @injury, @yellow, @red, @training, @goals, @assists, @caused, @keeper_clean, @penal_created, @penal_held)",
-                    _dbase.connection);
+                    connection);
                 cmd.Parameters.AddWithValue("@player_id", stats.GetPlayerId());
                 cmd.Parameters.AddWithValue("@injury", stats.GetInjury());
                 cmd.Parameters.AddWithValue("@yellow", stats.GetYellow());
@@ -73,20 +69,20 @@ namespace Dal
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 reader.Close();
-                _dbase.Close();
+                Close();
             }
             return stats;
         }
 
         public StatsDTO UpdateStats(StatsDTO stats)
         {
-            if (_dbase.IsConnect())
+            if (IsConnect())
             {
                 MySqlCommand cmd = new MySqlCommand(
                     "UPDATE player_stats SET injury=@injury, yellow_carts=@yellow, red_carts=@red, training_commitment=@training, " +
                     "goals_scored=@goals, assists_given=@assists, caused_offside=@caused, keeper_clean_sheet=@keeper_clean, " +
                     "penalties_created_defence=@penal_created, penalties_held=@penal_held WHERE player_id=@player_id LIMIT 1",
-                    _dbase.connection);
+                    connection);
                 cmd.Parameters.AddWithValue("@player_id", stats.GetPlayerId());
                 cmd.Parameters.AddWithValue("@injury", stats.GetInjury());
                 cmd.Parameters.AddWithValue("@yellow", stats.GetYellow());
@@ -103,7 +99,7 @@ namespace Dal
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 reader.Close();
-                _dbase.Close();
+                Close();
             }
             return stats;
         }

@@ -9,20 +9,24 @@ using System.Threading.Tasks;
 
 namespace VoetbalSpelersBusiness
 {
-    public class Club
+    public class Club : IClub
     {
         private string name;
         public List<Team> teams = new List<Team>();
-        public List<Team> GetTeams() { return teams; }
 
         public Club(string name)
         {
             this.name = name;
+            
+        }
+        public List<Team> GetTeams()
+        {
             List<TeamDTO> data = new TeamData().GetTeams();
             foreach (TeamDTO TeamData in data)
             {
                 teams.Add(new Team(TeamData.GetId(), TeamData.GetTeamname(), TeamData.GetCoachId()));
             }
+            return teams;
         }
 
         public Team Create(Team team)

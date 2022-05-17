@@ -8,20 +8,15 @@ using MySql.Data.MySqlClient;
 
 namespace Dal
 {
-    public class PlayerData
+    public class PlayerData : Database
     {
-        public Database _dbase;
-        public PlayerData()
-        {
-            _dbase = new Database();
-        }
         public List<PlayerDTO> GetPlayersByTeamId(int id)
         {
             List<PlayerDTO> spelersList = new List<PlayerDTO>();
-            if (_dbase.IsConnect())
+            if (IsConnect())
             {
                 string query = "SELECT * FROM players WHERE teamname=@team_id ";
-                MySqlCommand cmd = new MySqlCommand(query, _dbase.connection);
+                MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@team_id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -35,7 +30,7 @@ namespace Dal
                     spelersList.Add(result);
                 }
                 reader.Close();
-                _dbase.Close();
+                Close();
             }
             return spelersList;
         }
@@ -43,10 +38,10 @@ namespace Dal
         public PlayerDTO GetPlayerById(int id)
         {
             PlayerDTO player = null;
-            if (_dbase.IsConnect())
+            if (IsConnect())
             {
                 string query = "SELECT * FROM players WHERE id=@player_id LIMIT 1";
-                MySqlCommand cmd = new MySqlCommand(query, _dbase.connection);
+                MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@player_id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -59,7 +54,7 @@ namespace Dal
                     player = new PlayerDTO(player_id, firstname, lastname, position, team_id);
                 }
                 reader.Close();
-                _dbase.Close();
+                Close();
             }
             return player;
         }
@@ -67,10 +62,10 @@ namespace Dal
         public PlayerDTO CreatePlayer(PlayerDTO player)
         {
             PlayerDTO temp = null;
-            if (_dbase.IsConnect())
+            if (IsConnect())
             {
                 string query = "INSERT INTO players(firstname, lastname, position, teamname) VALUES (@firstname, @lastname, @position, @teamname)";
-                MySqlCommand cmd = new MySqlCommand(query, _dbase.connection);
+                MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@firstname", player.GetFirstname());
                 cmd.Parameters.AddWithValue("@lastname", player.GetLastname());
                 cmd.Parameters.AddWithValue("@position", player.GetPosition());
@@ -79,7 +74,7 @@ namespace Dal
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 reader.Close();
-                _dbase.Close();
+                Close();
             }
             return temp;
         }

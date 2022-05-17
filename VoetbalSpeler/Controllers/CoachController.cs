@@ -29,11 +29,12 @@ namespace VoetbalSpeler.Controllers
         {
             try
             {
+                IClub club = new Club("ijfc");
+
                 string firstname = collection["Firstname"];
                 string lastname = collection["Lastname"];
-                Club ijfc = new("Ijfc");
                 Coach coach = new(1, firstname, lastname);
-                ijfc.CreateCoach(coach);
+                club.CreateCoach(coach);
                 return RedirectToAction("Index", "Team");
             }
             catch

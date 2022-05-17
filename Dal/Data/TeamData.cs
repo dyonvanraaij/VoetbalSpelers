@@ -8,21 +8,17 @@ using MySql.Data.MySqlClient;
 
 namespace Dal
 {
-    public class TeamData
+    public class TeamData : Database
     {
-        public Database _dbase;
-        public TeamData()
-        {
-            _dbase = new Database();
-        }
+     
 
         public List<TeamDTO> GetTeams()
         {
             List<TeamDTO> teamsList = new List<TeamDTO>();
-            if (_dbase.IsConnect())
+            if (IsConnect())
             {
                 string query = "SELECT * FROM teams ";
-                MySqlCommand cmd = new MySqlCommand(query, _dbase.connection);
+                MySqlCommand cmd = new MySqlCommand(query, connection);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -33,7 +29,7 @@ namespace Dal
                     teamsList.Add(result);
                 }
                 reader.Close();
-                _dbase.Close();
+                Close();
             }
             return teamsList;
         }
@@ -41,12 +37,12 @@ namespace Dal
         public TeamDTO GetTeamById(int id)
         {
             TeamDTO temp = null;
-            if (_dbase.IsConnect())
+            if (IsConnect())
             {
                 string query = "SELECT * FROM teams " +
                     "WHERE team_id=@team_id " +
                     "LIMIT 1";
-                MySqlCommand cmd = new MySqlCommand(query, _dbase.connection);
+                MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@team_id", id);
                 cmd.Prepare();
 
@@ -59,24 +55,24 @@ namespace Dal
                     temp = new TeamDTO(new_id, teamname, coach_id);
                 }
                 reader.Close();
-                _dbase.Close();
+                Close();
             }
             return temp;
         }
 
         public void Create(TeamDTO team)
         {
-            if (_dbase.IsConnect())
+            if (IsConnect())
             {
                 string query = "INSERT INTO teams(teamname, coach_id) VALUES (@teamname, @coach_id)";
-                MySqlCommand cmd = new MySqlCommand(query, _dbase.connection);
+                MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@teamname", team.GetTeamname());
                 cmd.Parameters.AddWithValue("@coach_id", team.GetCoachId());
                 cmd.Prepare();
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 reader.Close();
-                _dbase.Close();
+                Close();
             }
         }
     }

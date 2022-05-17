@@ -4,7 +4,7 @@ using Dal.Dto;
 
 namespace VoetbalSpelersBusiness
 {
-    public class Team
+    public class Team : ITeam
     {
         private int id;
         private string teamname;

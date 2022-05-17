@@ -13,8 +13,9 @@ namespace VoetbalSpeler.Controllers
         // GET: PlayerController
         public ActionResult Index(int id)
         {
-            Club ijfc = new("ijfc");
-            Team team = ijfc.GetTeamById(id);
+            IClub club = new Club("ijfc");
+            //Team team = club.GetTeamById(id);
+            ITeam team = club.GetTeamById(id);
             List<Player> spelers = team.GetPlayersByTeamId(id);
             return View(Tuple.Create(spelers, team));
         }
@@ -32,12 +33,12 @@ namespace VoetbalSpeler.Controllers
         {
             try
             {
+                IClub club = new Club("ijfc");
+
                 string firstname = collection["Firstname"];
                 string lastname = collection["Lastname"];
                 string position = collection["Position"];
-                int teamname = Int32.Parse(collection["Teamname"]);
-                Club ijfc = new("ijfc");
-                Team team = ijfc.GetTeamById(id);
+                ITeam team = club.GetTeamById(id);
                 Player speler = new(1, firstname, lastname, position, id);
                 team.AddPlayer(speler);
                 return RedirectToAction("Index", "Player", new { id = id });
