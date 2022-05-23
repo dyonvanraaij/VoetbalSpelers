@@ -21,6 +21,7 @@ namespace VoetbalSpelersBusiness
         private int keeper_clean;
         private int penal_created;
         private int penal_held;
+        private double ranking_number;
 
         public int Player_id
         {
@@ -68,8 +69,13 @@ namespace VoetbalSpelersBusiness
         {
             get { return penal_created; }
         }
+        public double Ranking_number
+        {
+            set { ranking_number = value; }
+            get { return ranking_number; }
+        }
         public Stats(int player_id, int goals, int assists, bool injury, int keeper_clean, int yellow, int red, int penal_held,
-            int penal_created, int training, int caused)
+            int penal_created, int training, int caused, double ranking_number = 0)
         {
             this.player_id = player_id;
             this.injury = injury;
@@ -82,6 +88,7 @@ namespace VoetbalSpelersBusiness
             this.keeper_clean = keeper_clean;
             this.penal_held = penal_held;
             this.penal_created = penal_created;
+            this.ranking_number = ranking_number;
         }
     }
 

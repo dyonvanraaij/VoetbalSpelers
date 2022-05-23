@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoetbalSpelersBusiness", "V
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal", "Dal\Dal.csproj", "{8DC03144-D949-410D-AE05-A720BB0D1AC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoetbalSpeler", "VoetbalSpeler\VoetbalSpeler.csproj", "{F4ADD879-CBDC-4C83-A6A3-EC5D5BBCD029}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoetbalSpeler", "VoetbalSpeler\VoetbalSpeler.csproj", "{F4ADD879-CBDC-4C83-A6A3-EC5D5BBCD029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{A125F60C-4010-43CC-A7C1-A0683D1C9EA5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5F458125-202F-4D91-B517-BDA95861E914} = {5F458125-202F-4D91-B517-BDA95861E914}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +32,10 @@ Global
 		{F4ADD879-CBDC-4C83-A6A3-EC5D5BBCD029}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4ADD879-CBDC-4C83-A6A3-EC5D5BBCD029}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4ADD879-CBDC-4C83-A6A3-EC5D5BBCD029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A125F60C-4010-43CC-A7C1-A0683D1C9EA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A125F60C-4010-43CC-A7C1-A0683D1C9EA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A125F60C-4010-43CC-A7C1-A0683D1C9EA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A125F60C-4010-43CC-A7C1-A0683D1C9EA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
