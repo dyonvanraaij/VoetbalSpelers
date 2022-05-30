@@ -40,7 +40,7 @@ namespace VoetbalSpeler.Controllers
                 string position = collection["Position"];
                 ITeam team = club.GetTeamById(id);
                 Player speler = new(1, firstname, lastname, position, id);
-                team.AddPlayer(speler);
+                team.CreatePlayer(speler);
                 return RedirectToAction("Index", "Player", new { id = id });
             }
             catch

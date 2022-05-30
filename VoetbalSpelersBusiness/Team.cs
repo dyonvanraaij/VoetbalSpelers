@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Dal;
-using Dal.Dto;
 
 namespace VoetbalSpelersBusiness
 {
@@ -23,6 +22,7 @@ namespace VoetbalSpelersBusiness
         }
         public int CoachId
         {
+            set { CoachId = value; }
             get { return coachId; }
         }
         public Team(int id, string teamname, int coachId)
@@ -30,25 +30,20 @@ namespace VoetbalSpelersBusiness
             this.id = id;
             this.teamname = teamname;
             this.coachId = coachId;
-         
-           List<PlayerDTO> data = new PlayerData().GetPlayersByTeamId(id);
-           foreach (PlayerDTO PlayerData in data)
-           {
+
+            IPlayerData playerInterface = new PlayerData();
+            List<PlayerDTO> data = playerInterface.GetPlayersByTeamId(id);
+            foreach (PlayerDTO PlayerData in data)
+            {
                 players.Add(new Player(PlayerData.GetId(), PlayerData.GetFirstname(), PlayerData.GetLastname(), PlayerData.GetPosition(), PlayerData.GetTeamname()));
-           }           
+            }
         }
 
-        public Player GetPlayerById(int id)
-        {
-            PlayerDTO data = new PlayerData().GetPlayerById(id);
-            Player player = new(data.GetId(), data.GetFirstname(), data.GetLastname(), data.GetPosition(), data.GetTeamname());
-            return player;
-        }
-
-        public Player AddPlayer(Player speler)
+        public Player CreatePlayer(Player speler)
         {
             PlayerDTO data = new(speler.Id, speler.Firstname, speler.Lastname, speler.Position, speler.Teamname);
-            new PlayerData().CreatePlayer(data);
+            IPlayerData playerInterface = new PlayerData();
+            playerInterface.CreatePlayer(data);
             return speler;
         }
     }

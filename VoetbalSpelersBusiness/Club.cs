@@ -1,6 +1,4 @@
 ﻿using Dal;
-using Dal.Data;
-using Dal.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +11,7 @@ namespace VoetbalSpelersBusiness
     {
         private string name;
         public List<Team> teams = new List<Team>();
+        public List<Coach> coaches = new List<Coach>();
 
         public Club(string name)
         {
@@ -21,7 +20,8 @@ namespace VoetbalSpelersBusiness
         }
         public List<Team> GetTeams()
         {
-            List<TeamDTO> data = new TeamData().GetTeams();
+            ITeamData teamInterface = new TeamData();
+            List<TeamDTO> data = teamInterface.GetTeams();
             foreach (TeamDTO TeamData in data)
             {
                 teams.Add(new Team(TeamData.GetId(), TeamData.GetTeamname(), TeamData.GetCoachId()));
@@ -32,13 +32,15 @@ namespace VoetbalSpelersBusiness
         public Team Create(Team team)
         {
             TeamDTO teamDTO = new(team.Id, team.Teamname, team.CoachId);
-            new TeamData().Create(teamDTO);
+            ITeamData teamInterface = new TeamData();
+            teamInterface.Create(teamDTO);
             return team;
         }
 
         public Team GetTeamById(int id)
         {
-            TeamDTO teamDTO = new TeamData().GetTeamById(id);
+            ITeamData teamInterface = new TeamData();
+            TeamDTO teamDTO = teamInterface.GetTeamById(id);
             Team team = new(teamDTO.GetId(), teamDTO.GetTeamname(), teamDTO.GetCoachId());
             return team;
         }
@@ -46,8 +48,37 @@ namespace VoetbalSpelersBusiness
         public Coach CreateCoach(Coach coach)
         {
             CoachDTO coachDTO = new(coach.CoachId, coach.Firstname, coach.Lastname);
-            new CoachData().CreateCoach(coachDTO);
+            ICoachData coachInterface = new CoachData();
+            coachInterface.CreateCoach(coachDTO);
             return coach;
         }
+        public Player GetPlayerById(int id)
+        {
+            IPlayerData playerInterface = new PlayerData();
+            PlayerDTO data = playerInterface.GetPlayerById(id);
+            Player player = new(data.GetId(), data.GetFirstname(), data.GetLastname(), data.GetPosition(), data.GetTeamname());
+            return player;
+        }
+
+        public List<Coach> GetCoaches()
+        {
+            ICoachData clubInterface = new CoachData();
+            List<CoachDTO> data = clubInterface.GetCoaches();
+            foreach (CoachDTO coachData in data)
+            {
+                coaches.Add(new Coach(coachData.GetCoachId(), coachData.GetFirstname(), coachData.GetLastname()));
+            }
+            return coaches;
+
+        }
+
+        public int GetTeamByPlayerId(int id)
+        {
+            ITeamData clubInterface = new TeamData();
+            int teamId = clubInterface.GetTeamByPlayerId(id);
+            int test = teamId;
+            return teamId;
+        }
+
     }
 }

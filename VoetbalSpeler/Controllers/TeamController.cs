@@ -21,7 +21,10 @@ namespace VoetbalSpeler.Controllers
         // GET: TeamController/Create
         public ActionResult Create()
         {
-            return View();
+            IClub club = new Club("ijfc");
+            Team team = new Team(0, "teamname", 1);
+            List<Coach> coaches = club.GetCoaches();
+            return View(Tuple.Create(coaches, team));
         }
 
         // POST: TeamController/Create
@@ -33,9 +36,11 @@ namespace VoetbalSpeler.Controllers
             {
                 IClub club = new Club("ijfc");
 
-                string teamname = Convert.ToString(collection["Teamname"]);
-                int coach_id = Int32.Parse(collection["CoachId"]);
-                Team team = new(0, teamname, coach_id);
+                string teamname = Convert.ToString(collection["Item2.Teamname"]);
+                string Coach = Convert.ToString(collection["Item2.CoachId"]);
+                string[] words = Coach.Split(' ');
+                int coachId = Int32.Parse(words[0]);
+                Team team = new(0, teamname, coachId);
 
                 club.Create(team);
 
@@ -50,8 +55,10 @@ namespace VoetbalSpeler.Controllers
         // GET: TeamController/Edit/5
         public ActionResult Edit(int id)
         {
-
-            return View();
+            IClub club = new Club("ijfc");
+            Team team = club.GetTeamById(id);
+            List<Coach> coaches = club.GetCoaches();
+            return View(Tuple.Create(coaches, team));
         }
 
         // POST: TeamController/Edit/5

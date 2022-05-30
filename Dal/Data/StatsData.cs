@@ -1,5 +1,4 @@
-﻿using Dal.Dto;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dal
 {
-    public class StatsData : Database
+    public class StatsData : Database, IStatsData
     {
       
         public StatsDTO GetStatsByPlayerId(int player_id)

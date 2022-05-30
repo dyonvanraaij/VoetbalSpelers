@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dal.Dto;
 using MySql.Data.MySqlClient;
 
 namespace Dal
 {
-    public class PlayerData : Database
+    public class PlayerData : Database, IPlayerData
     {
         public List<PlayerDTO> GetPlayersByTeamId(int id)
         {

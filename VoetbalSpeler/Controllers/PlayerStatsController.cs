@@ -20,8 +20,7 @@ namespace VoetbalSpeler.Controllers
         public ActionResult Details(int id)
         {
             IClub club = new Club("ijfc");
-            ITeam team = club.GetTeamById(id);
-            IPlayer player = (IPlayer)team.GetPlayerById(id);
+            IPlayer player = club.GetPlayerById(id);
             Stats stats = player.GetStatsById(id);
             return View(Tuple.Create(player,stats));
         }
@@ -31,8 +30,7 @@ namespace VoetbalSpeler.Controllers
         {
             // Stats weghalen en niet meegeven
             IClub club = new Club("ijfc");
-            ITeam team = club.GetTeamById(id);
-            IPlayer player = (IPlayer)team.GetPlayerById(id);
+            IPlayer player = club.GetPlayerById(id);
             Stats stats = new(id,0,0,false,0,0,0,0,0,0,0);
             return View(Tuple.Create(player, stats));
         }
@@ -61,14 +59,14 @@ namespace VoetbalSpeler.Controllers
                     Stats stats = new(player_id, goals, assists, injury, keeper_clean, yellow, red, penal_held, penal_created, training, caused);
 
                     // Check for add or update
-                    ITeam team = new Team(id, "naam", 1);
-                    IPlayer speler = (IPlayer)team.GetPlayerById(player_id);
+                    IClub club = new Club("ijfc");
+                    int teamId = club.GetTeamByPlayerId(player_id);
+                    IPlayer speler = club.GetPlayerById(player_id);
                     Stats oldStats = speler.GetStatsById(id);
-                    if (oldStats is null)
+                    if (oldStats.Player_id == 0)
                     {
                         speler.AddStats(stats);
-                    }
-                    else
+                    } else
                     {
                         goals += oldStats.Goals;
                         assists += oldStats.Assists;
@@ -84,9 +82,9 @@ namespace VoetbalSpeler.Controllers
 
                     // Get Team_id from player en give it to playerController index view
                     // View return goedzetten en alles terug zetten zodat het word toegevoegd of geupdate in database
-                    return RedirectToAction("Index", "Player", new { id = speler.Teamname });
+                    return RedirectToAction("Index", "Player", new { id = teamId });
                 }
-                catch
+                catch (Exception)
                 {
                     return RedirectToAction("Index", "Team");
                 }

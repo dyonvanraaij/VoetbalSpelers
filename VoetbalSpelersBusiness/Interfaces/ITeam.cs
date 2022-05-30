@@ -11,7 +11,7 @@ namespace VoetbalSpelersBusiness
         public int Id { get; }
         public string Teamname { get; }
         public List<Player> GetPlayersByTeamId(int id);
-        public Player GetPlayerById(int id);
-        public Player AddPlayer(Player speler);
+        public Player CreatePlayer(Player speler);
+
     }
 }

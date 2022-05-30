@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dal.Dto;
 using MySql.Data.MySqlClient;
 
 namespace Dal
 {
-    public class TeamData : Database
+    public class TeamData : Database, ITeamData
     {
-     
-
         public List<TeamDTO> GetTeams()
         {
             List<TeamDTO> teamsList = new List<TeamDTO>();
@@ -58,6 +55,29 @@ namespace Dal
                 Close();
             }
             return temp;
+        }
+
+        public int GetTeamByPlayerId(int id)
+        {
+            int teamId = 0;
+            if (IsConnect())
+            {
+                string query = "SELECT teamname FROM players " +
+                    "WHERE id=@id " +
+                    "LIMIT 1";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Prepare();
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    teamId = reader.GetInt32("teamname");
+                }
+                reader.Close();
+                Close();
+            }
+            return teamId;
         }
 
         public void Create(TeamDTO team)

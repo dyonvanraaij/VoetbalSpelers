@@ -14,6 +14,7 @@ namespace VoetbalSpelersBusiness
 
         public int CoachId
         {
+            set { CoachId = value; }
             get { return coachId; }
         }
         public string Firstname

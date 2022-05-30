@@ -1,5 +1,4 @@
 ﻿using Dal;
-using Dal.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +56,8 @@ namespace VoetbalSpelersBusiness
         }
         public Stats GetStatsById(int id)
         {
-            StatsDTO data = new StatsData().GetStatsByPlayerId(id);
+            IStatsData statsInterface = new StatsData();
+            StatsDTO data = statsInterface.GetStatsByPlayerId(id);
             if (data is not null)
             {
                 Stats temp = new Stats(data.GetPlayerId(), data.GetGoals(), data.GetAssists(), data.GetInjury(), data.GetKeeperClean(), data.GetYellow(), data.GetRed(), data.GetPenalHeld(),
@@ -73,7 +73,8 @@ namespace VoetbalSpelersBusiness
         {
             StatsDTO statsDTO = new(stats.Player_id, stats.Goals, stats.Assists, stats.Injury, stats.Keeper_clean, stats.Yellow, stats.Red, stats.Penal_held, stats.Penal_created,
                 stats.Training, stats.Caused);
-            StatsDTO add = new StatsData().AddStats(statsDTO);
+            IStatsData statsInterface = new StatsData();
+            StatsDTO add = statsInterface.AddStats(statsDTO);
             return add;
         }
 
@@ -81,7 +82,8 @@ namespace VoetbalSpelersBusiness
         {
             StatsDTO statsDTO = new(stats.Player_id, stats.Goals, stats.Assists, stats.Injury, stats.Keeper_clean, stats.Yellow, stats.Red, stats.Penal_held, stats.Penal_created,
                 stats.Training, stats.Caused);
-            StatsDTO add = new StatsData().UpdateStats(statsDTO);
+            IStatsData statsInterface = new StatsData();
+            StatsDTO add = statsInterface.UpdateStats(statsDTO);
             return add;
         }
     }
