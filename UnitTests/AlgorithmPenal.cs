@@ -13,7 +13,7 @@ namespace UnitTests
             IRankingStats algorithm = new RankingPenalHeld();
             algorithm.Run(stats, player);
 
-            Assert.AreEqual(4.5, stats.Ranking_number);
+            Assert.AreEqual(104.5, player.Ranking_number);
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace UnitTests
             IRankingStats algorithm = new RankingPenalCreated();
             algorithm.Run(stats, player);
 
-            Assert.AreEqual(-3.75, stats.Ranking_number);
+            Assert.AreEqual(96.25, player.Ranking_number);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace UnitTests
             IRankingStats algorithm = new RankingPenalCreated();
             algorithm.Run(stats, player);
 
-            Assert.AreEqual(-2, stats.Ranking_number);
+            Assert.AreEqual(98, player.Ranking_number);
         }
 
     }

@@ -13,7 +13,7 @@ namespace UnitTests
             IRankingStats algorithm = new RankingTraining();
             algorithm.Run(stats, player);
 
-            Assert.AreEqual(10, stats.Ranking_number);
+            Assert.AreEqual(110, player.Ranking_number);
         }
     }
 }

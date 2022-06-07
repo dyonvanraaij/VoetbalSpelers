@@ -10,8 +10,8 @@ namespace VoetbalSpelersBusiness
     {
         public double Run(Stats stats, Player player)
         {
-            stats.Ranking_number -= stats.Red;
-            return stats.Ranking_number;
+            player.Ranking_number -= stats.Red;
+            return player.Ranking_number;
         }
     }
 }

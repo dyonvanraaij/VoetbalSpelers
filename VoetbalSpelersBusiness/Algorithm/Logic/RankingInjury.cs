@@ -12,10 +12,10 @@ namespace VoetbalSpelersBusiness
         {
             if (stats.Injury == true)
             {
-                return stats.Ranking_number = -1000;
+                return player.Ranking_number = -1000;
             } else
             {
-                return stats.Ranking_number = 0;
+                return player.Ranking_number += 0;
             }
         
         }

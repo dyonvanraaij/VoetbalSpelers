@@ -13,7 +13,7 @@ namespace UnitTests
             IRankingStats algorithm = new RankingCausedOffside();
             algorithm.Run(stats, player);
 
-            Assert.AreEqual(-4, stats.Ranking_number);
+            Assert.AreEqual(96, player.Ranking_number);
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace UnitTests
             IRankingStats algorithm = new RankingCausedOffside();
             algorithm.Run(stats, player);
 
-            Assert.AreEqual(-1, stats.Ranking_number);
+            Assert.AreEqual(99, player.Ranking_number);
         }
 
     }

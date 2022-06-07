@@ -135,3 +135,4 @@ C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpeler\obj\Debug\net5.0\Razor\
 C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpeler\obj\Debug\net5.0\Razor\Views\Player\Edit.cshtml.g.cs
 C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpeler\obj\Debug\net5.0\Razor\Views\Coach\Create.cshtml.g.cs
 C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpeler\obj\Debug\net5.0\Razor\Views\Team\Edit.cshtml.g.cs
+C:\Users\dyonv\source\repos\VoetbalSpelers\VoetbalSpeler\obj\Debug\net5.0\Razor\Views\Team\RankedList.cshtml.g.cs

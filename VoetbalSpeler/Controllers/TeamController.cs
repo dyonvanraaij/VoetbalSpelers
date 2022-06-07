@@ -18,6 +18,16 @@ namespace VoetbalSpeler.Controllers
             return View(teams);
         }
 
+        // GET: TeamController/RankedList/5
+        [HttpGet]
+        public ActionResult RankedList(int id)
+        {
+            IRanking ranking = new Ranking();
+            List<Player> players = ranking.GetRankedList(id);
+
+            return View(players);
+        }
+
         // GET: TeamController/Create
         public ActionResult Create()
         {
@@ -75,6 +85,7 @@ namespace VoetbalSpeler.Controllers
                 return View();
             }
         }
+
 
     }
 }

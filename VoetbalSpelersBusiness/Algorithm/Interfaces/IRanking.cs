@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace VoetbalSpelersBusiness
 {
-    interface IRanking
+    public interface IRanking
     {
-        public List<Stats> GetRankedList(List<Stats> stats, List<Player> player);
+        public List<Player> GetRankedList(int teamId);
     }
 }

@@ -13,7 +13,7 @@ namespace UnitTests
             IRankingStats algorithm = new RankingYellowCarts();
             algorithm.Run(stats, player);
 
-            Assert.AreEqual(-5, stats.Ranking_number);
+            Assert.AreEqual(95, player.Ranking_number);
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace UnitTests
             IRankingStats algorithm = new RankingRedCarts();
             algorithm.Run(stats, player);
 
-            Assert.AreEqual(-10, stats.Ranking_number);
+            Assert.AreEqual(90, player.Ranking_number);
         }
 
     }

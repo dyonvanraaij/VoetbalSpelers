@@ -13,18 +13,18 @@ namespace VoetbalSpelersBusiness
             switch (player.Position)
             {
                 case "attack":
-                    stats.Ranking_number += stats.Assists * 0.8;
+                    player.Ranking_number += stats.Assists * 0.8;
                     break;
                 case "midfield":
-                    stats.Ranking_number += stats.Assists * 1.75;
+                    player.Ranking_number += stats.Assists * 1.75;
                     break;
                 case "defend":
-                    stats.Ranking_number += stats.Assists * 0.5;
+                    player.Ranking_number += stats.Assists * 0.5;
                     break;
                 default:
                     break;
             }
-            return stats.Ranking_number;
+            return player.Ranking_number;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace VoetbalSpelersBusiness
         private string lastname;
         private string position;
         private int teamname;
+        private double ranking_number;
 
         public int Id
         {
@@ -44,15 +45,21 @@ namespace VoetbalSpelersBusiness
             get { return teamname; }
         }
 
+        public double Ranking_number
+        {
+            set { ranking_number = value; }
+            get { return ranking_number; }
+        }
         object IPlayer.Teamname => throw new NotImplementedException();
 
-        public Player(int id, string firstname, string lastname, string position, int teamname)
+        public Player(int id, string firstname, string lastname, string position, int teamname, double ranking_number = 100)
         {
             this.id = id;
             this.firstname = firstname;
             this.lastname = lastname;
             this.position = position;
             this.teamname = teamname;
+            this.ranking_number = ranking_number;
         }
         public Stats GetStatsById(int id)
         {

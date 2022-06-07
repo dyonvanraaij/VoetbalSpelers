@@ -1,0 +1,208 @@
+﻿@model IEnumerable<Player>
+
+@{
+    ViewData["Title"] = "RankedList";
+}
+
+<h1>RankedList</h1>
+
+<p>
+    <a href="javascript:void(0);" onclick="history.go(-1);">Back</a>
+</p>
+<div>
+    <div class="row">
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ranking_number)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var countAttack = 0;
+                        @foreach (var item in Model)
+                        {
+                            if (item.Position == "attack")
+                            {
+                                var style = (countAttack < 3) ? "color:green" : "color:red";
+
+                                <tr style="@style">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Firstname) @Html.DisplayFor(modelItem => item.Lastname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Position)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ranking_number)
+                                    </td>
+                                </tr>
+                                countAttack++;
+                            }
+                        }
+                     }
+                    </tbody>
+            </table>
+            <table class="table pt-3">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ranking_number)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var countDefend = 0;
+                        @foreach (var item in Model)
+                        {
+                            if (item.Position == "defend")
+                            {
+                                var style = (countDefend < 4) ? "color:green" : "color:red";
+
+                                <tr style="@style">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Firstname) @Html.DisplayFor(modelItem => item.Lastname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Position)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ranking_number)
+                                    </td>
+                                </tr>
+                                countDefend++;
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ranking_number)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var countMidfield = 0;
+                        @foreach (var item in Model)
+                        {
+                            if (item.Position == "midfield")
+                            {
+                                var style = (countMidfield < 3) ? "color:green" : "color:red";
+
+                                <tr style="@style">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Firstname) @Html.DisplayFor(modelItem => item.Lastname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Position)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ranking_number)
+                                    </td>
+                                </tr>
+                                countMidfield++;
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+            <table class="table pt-3">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ranking_number)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var countKeeper = 0;
+                        @foreach (var item in Model)
+                        {
+                            if (item.Position == "keeper")
+                            {
+                                var style = (countKeeper < 1) ? "color:green" : "color:red";
+
+                                <tr style="@style">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Firstname) @Html.DisplayFor(modelItem => item.Lastname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Position)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ranking_number)
+                                    </td>
+                                </tr>
+                                countKeeper++;
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

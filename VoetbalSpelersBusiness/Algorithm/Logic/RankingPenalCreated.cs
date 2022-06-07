@@ -13,15 +13,15 @@ namespace VoetbalSpelersBusiness
             switch (player.Position)
             {
                 case "keeper":
-                    stats.Ranking_number -= stats.Penal_created * 0.75;
+                    player.Ranking_number -= stats.Penal_created * 0.75;
                     break;
                 case "defend":
-                    stats.Ranking_number -= stats.Penal_created * 0.4;
+                    player.Ranking_number -= stats.Penal_created * 0.4;
                     break;
                 default:
                     break;
             }
-            return stats.Ranking_number;
+            return player.Ranking_number;
         }
     }
 }

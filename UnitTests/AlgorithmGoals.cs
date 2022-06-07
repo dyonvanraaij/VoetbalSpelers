@@ -13,7 +13,7 @@ namespace UnitTests
             IRankingStats algorithm = new RankingGoals();
             algorithm.Run(stats, player);
 
-            Assert.AreEqual(15, stats.Ranking_number);
+            Assert.AreEqual(115, player.Ranking_number);
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace UnitTests
             IRankingStats algorithm = new RankingGoals();
             algorithm.Run(stats, player);
 
-            Assert.AreEqual(12.5, stats.Ranking_number);
+            Assert.AreEqual(112.5, player.Ranking_number);
         }
     }
 }
