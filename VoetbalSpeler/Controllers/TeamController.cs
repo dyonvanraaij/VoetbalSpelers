@@ -40,6 +40,7 @@ namespace VoetbalSpeler.Controllers
         // POST: TeamController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public ActionResult Create(IFormCollection collection)
         {
             try
@@ -54,11 +55,11 @@ namespace VoetbalSpeler.Controllers
 
                 club.Create(team);
 
-                return View();
+                return RedirectToAction("Index", "Team");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index", "Team");
             }
         }
 
@@ -78,11 +79,21 @@ namespace VoetbalSpeler.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                IClub club = new Club("ijfc");
+
+                string teamname = Convert.ToString(collection["Item2.Teamname"]);
+                string Coach = Convert.ToString(collection["Item2.CoachId"]);
+                string[] words = Coach.Split(' ');
+                int coachId = Int32.Parse(words[0]);
+                Team team = new(id, teamname, coachId);
+
+                club.Edit(team);
+
+                return RedirectToAction("Index", "Team");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index", "Team");
             }
         }
 

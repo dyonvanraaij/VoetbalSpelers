@@ -80,5 +80,12 @@ namespace VoetbalSpelersBusiness
             return teamId;
         }
 
+        public Team Edit(Team team)
+        {
+            TeamDTO teamDTO = new(team.Id, team.Teamname, team.CoachId);
+            ITeamData teamInterface = new TeamData();
+            teamInterface.Edit(teamDTO);
+            return team;
+        }
     }
 }

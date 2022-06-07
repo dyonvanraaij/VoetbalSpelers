@@ -95,6 +95,27 @@ namespace Dal
                 Close();
             }
         }
+
+        public TeamDTO Edit(TeamDTO team)
+        {
+            if (IsConnect())
+            {
+                MySqlCommand cmd = new MySqlCommand(
+                    "UPDATE teams SET teamname=@teamname, coach_id=@coach_id WHERE team_id=@team_id LIMIT 1",
+                    connection);
+                cmd.Parameters.AddWithValue("@teamname", team.GetTeamname());
+                cmd.Parameters.AddWithValue("@coach_id", team.GetCoachId());
+                cmd.Parameters.AddWithValue("@team_id", team.GetId());
+                cmd.Prepare();
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                reader.Close();
+                Close();
+            }
+            return team;
+        }
+
     }
 
 }

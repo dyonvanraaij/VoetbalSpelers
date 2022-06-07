@@ -15,5 +15,6 @@ namespace VoetbalSpelersBusiness
         public Player GetPlayerById(int id);
         public List<Coach> GetCoaches();
         public int GetTeamByPlayerId(int id);
+        public Team Edit(Team team);
     }
 }

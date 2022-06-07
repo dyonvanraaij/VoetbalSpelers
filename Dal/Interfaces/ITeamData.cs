@@ -12,5 +12,6 @@ namespace Dal
         public TeamDTO GetTeamById(int id);
         public void Create(TeamDTO team);
         public int GetTeamByPlayerId(int id);
+        public TeamDTO Edit(TeamDTO teamDTO);
     }
 }
