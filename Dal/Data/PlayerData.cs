@@ -25,7 +25,12 @@ namespace Dal
                     string lastname = reader.GetString("lastname");
                     string position = reader.GetString("position");
                     int team_id = reader.GetInt32("teamname");
-                    PlayerDTO result = new(player_id, firstname, lastname, position, team_id);
+                    PlayerDTO result = new();
+                    result.Id = player_id;
+                    result.Firstname = firstname;
+                    result.Lastname = lastname;
+                    result.Position = position;
+                    result.Teamname = team_id;
                     spelersList.Add(result);
                 }
                 reader.Close();
@@ -36,7 +41,7 @@ namespace Dal
 
         public PlayerDTO GetPlayerById(int id)
         {
-            PlayerDTO player = null;
+            PlayerDTO player = new();
             if (IsConnect())
             {
                 string query = "SELECT * FROM players WHERE id=@player_id LIMIT 1";
@@ -50,7 +55,11 @@ namespace Dal
                     string lastname = reader.GetString("lastname");
                     string position = reader.GetString("position");
                     int team_id = reader.GetInt32("teamname");
-                    player = new PlayerDTO(player_id, firstname, lastname, position, team_id);
+                    player.Id = player_id;
+                    player.Firstname = firstname;
+                    player.Lastname = lastname;
+                    player.Position = position;
+                    player.Teamname = team_id;
                 }
                 reader.Close();
                 Close();
@@ -65,10 +74,10 @@ namespace Dal
             {
                 string query = "INSERT INTO players(firstname, lastname, position, teamname) VALUES (@firstname, @lastname, @position, @teamname)";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@firstname", player.GetFirstname());
-                cmd.Parameters.AddWithValue("@lastname", player.GetLastname());
-                cmd.Parameters.AddWithValue("@position", player.GetPosition());
-                cmd.Parameters.AddWithValue("@teamname", player.GetTeamname());
+                cmd.Parameters.AddWithValue("@firstname", player.Firstname);
+                cmd.Parameters.AddWithValue("@lastname", player.Lastname);
+                cmd.Parameters.AddWithValue("@position", player.Position);
+                cmd.Parameters.AddWithValue("@teamname", player.Teamname);
                 cmd.Prepare();
 
                 MySqlDataReader reader = cmd.ExecuteReader();

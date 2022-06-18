@@ -8,7 +8,7 @@ namespace UnitTests
         [Test]
         public void PenalHeldKeeper()
         {
-            Player player = new(1, "firstname", "lastname", "keeper", 1);
+            var player = new Player { Id = 1, Firstname = "firstname", Lastname = "lastname", Position = "keeper", Teamname = 1, Ranking_number = 100 };
             Stats stats = new(1, 10, 10, true, 10, 10, 10, 3, 10, 100, 10);
             IRankingStats algorithm = new RankingPenalHeld();
             algorithm.Run(stats, player);
@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void PenalCreatedKeeper()
         {
-            Player player = new(1, "firstname", "lastname", "keeper", 1);
+            var player = new Player { Id = 1, Firstname = "firstname", Lastname = "lastname", Position = "keeper", Teamname = 1, Ranking_number = 100 };
             Stats stats = new(1, 10, 10, true, 10, 10, 10, 10, 5, 100, 10);
             IRankingStats algorithm = new RankingPenalCreated();
             algorithm.Run(stats, player);
@@ -30,7 +30,7 @@ namespace UnitTests
         [Test]
         public void PenalCreatedDefend()
         {
-            Player player = new(1, "firstname", "lastname", "defend", 1);
+            var player = new Player { Id = 1, Firstname = "firstname", Lastname = "lastname", Position = "defend", Teamname = 1, Ranking_number = 100 };
             Stats stats = new(1, 10, 10, true, 10, 10, 10, 10, 5, 100, 10);
             IRankingStats algorithm = new RankingPenalCreated();
             algorithm.Run(stats, player);

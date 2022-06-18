@@ -8,20 +8,37 @@ namespace VoetbalSpelersBusiness
 {
     public class Ranking : IRanking
     {
+        private Player playerContext;
+        private TeamContainer teamContainer;
+        private Team team;
+
+        public Ranking(Player playerContext, TeamContainer teamContainer, Team team)
+        {
+            this.playerContext = playerContext;
+            this.teamContainer = teamContainer;
+            this.team = team;
+        }
         public List<Player> GetRankedList(int teamId)
         {
-            IClub club = new Club("Ijfc");
-            ITeam team = club.GetTeamById(teamId);
-            List<Player> players = team.GetPlayersByTeamId(teamId);
+            team.Id = teamId;
+            List<Player> players = teamContainer.GetPlayersByTeamId(team);
+            List<Player> spelers = new List<Player>();
             List<Stats> stats = new List<Stats>();
             foreach(Player player in players)
             {
-                IPlayer speler = new Player(player.Id, player.Firstname, player.Lastname, player.Position, player.Teamname);
-                stats.Add(speler.GetStatsById(player.Id));
+                Player playertemp = new();
+                playertemp.Id = player.Id;
+                playertemp.Firstname = player.Firstname;
+                playertemp.Lastname = player.Lastname;
+                playertemp.Position = player.Position;
+                playertemp.Teamname = player.Teamname;
+                playertemp.Ranking_number = 100;
+                spelers.Add(playertemp);
+                stats.Add(playerContext.GetStatsById(player));
             }
 
             // Rank players with interfaces
-            List<Player> rankedPlayers = RankPlayers(players, stats);
+            List<Player> rankedPlayers = RankPlayers(spelers, stats);
 
             //Sort players before return
             List<Player> SortedList = SortRankedPlayers(rankedPlayers);
@@ -63,7 +80,7 @@ namespace VoetbalSpelersBusiness
             {
                 foreach (Stats items in stats)
                 {
-                    if (player.Id.Equals(items.Player_id))
+                    if (player.Id.Equals(items.PlayerId))
                     {
                         foreach (IRankingStats ranking in rankingInterfaces)
                         {

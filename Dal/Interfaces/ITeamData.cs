@@ -10,8 +10,8 @@ namespace Dal
     {
         public List<TeamDTO> GetTeams();
         public TeamDTO GetTeamById(int id);
+        public TeamDTO GetTeamByPlayerId(int id);
         public void Create(TeamDTO team);
-        public int GetTeamByPlayerId(int id);
-        public TeamDTO Edit(TeamDTO teamDTO);
+        public void Edit(TeamDTO teamDTO);
     }
 }

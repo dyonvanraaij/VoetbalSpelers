@@ -1,4 +1,4 @@
-﻿@model Tuple<IPlayer, Stats>
+﻿@model Tuple<Player, Stats>
 
 @{
     ViewData["Title"] = "Create/Update Stats";
@@ -52,19 +52,19 @@
                 <span asp-validation-for="Item2.Caused" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Item2.Keeper_clean" class="control-label"></label>
-                <input asp-for="Item2.Keeper_clean" class="form-control" />
-                <span asp-validation-for="Item2.Keeper_clean" class="text-danger"></span>
+                <label asp-for="Item2.KeeperClean" class="control-label"></label>
+                <input asp-for="Item2.KeeperClean" class="form-control" />
+                <span asp-validation-for="Item2.KeeperClean" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Item2.Penal_held" class="control-label"></label>
-                <input asp-for="Item2.Penal_held" class="form-control" />
-                <span asp-validation-for="Item2.Penal_held" class="text-danger"></span>
+                <label asp-for="Item2.PenalHeld" class="control-label"></label>
+                <input asp-for="Item2.PenalHeld" class="form-control" />
+                <span asp-validation-for="Item2.PenalHeld" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Item2.Penal_created" class="control-label"></label>
-                <input asp-for="Item2.Penal_created" class="form-control" />
-                <span asp-validation-for="Item2.Penal_created" class="text-danger"></span>
+                <label asp-for="Item2.PenalCreated" class="control-label"></label>
+                <input asp-for="Item2.PenalCreated" class="form-control" />
+                <span asp-validation-for="Item2.PenalCreated" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -10,6 +10,14 @@ namespace VoetbalSpeler.Controllers
 {
     public class CoachController : Controller
     {
+        private Club club;
+        private Coach coach;
+
+        public CoachController(Club club, Coach coach)
+        {
+            this.club = club;
+            this.coach = coach;
+        }
         // GET: CoachController
         //public ActionResult Index()
         //{
@@ -29,11 +37,11 @@ namespace VoetbalSpeler.Controllers
         {
             try
             {
-                IClub club = new Club("ijfc");
-
                 string firstname = collection["Firstname"];
                 string lastname = collection["Lastname"];
-                Coach coach = new(1, firstname, lastname);
+                coach.CoachId = 1;
+                coach.Firstname = firstname;
+                coach.Lastname = lastname;
                 club.CreateCoach(coach);
                 return RedirectToAction("Index", "Team");
             }

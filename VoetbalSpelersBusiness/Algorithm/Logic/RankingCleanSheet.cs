@@ -13,7 +13,7 @@ namespace VoetbalSpelersBusiness
             switch (player.Position)
             {
                 case "keeper":
-                    player.Ranking_number += stats.Keeper_clean * 0.5;
+                    player.Ranking_number += stats.KeeperClean * 0.5;
                     break;
                 default:
                     break;

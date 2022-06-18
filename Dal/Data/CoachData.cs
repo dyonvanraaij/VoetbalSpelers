@@ -15,8 +15,8 @@ namespace Dal
             {
                 string query = "INSERT INTO coach(firstname, lastname) VALUES (@firstname, @lastname)";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@firstname", coach.GetFirstname());
-                cmd.Parameters.AddWithValue("@lastname", coach.GetLastname());
+                cmd.Parameters.AddWithValue("@firstname", coach.Firstname);
+                cmd.Parameters.AddWithValue("@lastname", coach.Lastname);
 
                 cmd.Prepare();
 
@@ -38,7 +38,10 @@ namespace Dal
                     int coach_id = reader.GetInt32("coach_id");
                     string firstname = reader.GetString("firstname");
                     string lastname = reader.GetString("lastname");
-                    CoachDTO result = new(coach_id, firstname, lastname);
+                    CoachDTO result = new();
+                    result.CoachId = coach_id;
+                    result.Firstname = firstname;
+                    result.Lastname = lastname;
                     coachList.Add(result);
                 }
                 reader.Close();

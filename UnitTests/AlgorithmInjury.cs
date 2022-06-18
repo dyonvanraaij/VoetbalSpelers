@@ -8,7 +8,7 @@ namespace UnitTests
         [Test]
         public void InjuryTrue()
         {
-            Player player = new(1, "firstname", "lastname", "attack", 1);
+            var player = new Player { Id = 1, Firstname = "firstname", Lastname = "lastname", Position = "attack", Teamname = 1, Ranking_number=100 };
             Stats stats = new(1, 0, 0, true, 0, 0, 0, 0, 0, 0, 0);
             IRankingStats algorithm = new RankingInjury();
             algorithm.Run(stats, player);
@@ -19,7 +19,7 @@ namespace UnitTests
         [Test]
         public void InjuryFalse()
         {
-            Player player = new(1, "firstname", "lastname", "attack", 1);
+            var player = new Player { Id = 1, Firstname = "firstname", Lastname = "lastname", Position = "attack", Teamname = 1, Ranking_number = 100 };
             Stats stats = new(1, 0, 0, false, 0, 0, 0, 0, 0, 0, 0);
             IRankingStats algorithm = new RankingInjury();
             algorithm.Run(stats, player);

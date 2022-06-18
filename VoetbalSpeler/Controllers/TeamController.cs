@@ -10,10 +10,19 @@ namespace VoetbalSpeler.Controllers
 {
     public class TeamController : Controller
     {
+        private Club club;
+        private Ranking ranking;
+        private Team team;
+        public TeamController(Club club, Ranking ranking, Team team)
+        {
+            this.club = club;
+            this.ranking = ranking;
+            this.team = team;
+        }
+
         // GET: TeamController
         public ActionResult Index()
         {
-            IClub club = new Club("ijfc");
             List<Team> teams = club.GetTeams();
             return View(teams);
         }
@@ -22,7 +31,6 @@ namespace VoetbalSpeler.Controllers
         [HttpGet]
         public ActionResult RankedList(int id)
         {
-            IRanking ranking = new Ranking();
             List<Player> players = ranking.GetRankedList(id);
 
             return View(players);
@@ -31,8 +39,9 @@ namespace VoetbalSpeler.Controllers
         // GET: TeamController/Create
         public ActionResult Create()
         {
-            IClub club = new Club("ijfc");
-            Team team = new Team(0, "teamname", 1);
+            team.Id = 0;
+            team.Teamname = "teamname";
+            team.CoachId = 1;
             List<Coach> coaches = club.GetCoaches();
             return View(Tuple.Create(coaches, team));
         }
@@ -45,14 +54,13 @@ namespace VoetbalSpeler.Controllers
         {
             try
             {
-                IClub club = new Club("ijfc");
-
                 string teamname = Convert.ToString(collection["Item2.Teamname"]);
                 string Coach = Convert.ToString(collection["Item2.CoachId"]);
                 string[] words = Coach.Split(' ');
                 int coachId = Int32.Parse(words[0]);
-                Team team = new(0, teamname, coachId);
-
+                team.Id = 0;
+                team.Teamname = teamname;
+                team.CoachId = coachId;
                 club.Create(team);
 
                 return RedirectToAction("Index", "Team");
@@ -66,10 +74,10 @@ namespace VoetbalSpeler.Controllers
         // GET: TeamController/Edit/5
         public ActionResult Edit(int id)
         {
-            IClub club = new Club("ijfc");
-            Team team = club.GetTeamById(id);
+            team.Id = id;
+            Team selectedTeam = club.GetTeamById(team);
             List<Coach> coaches = club.GetCoaches();
-            return View(Tuple.Create(coaches, team));
+            return View(Tuple.Create(coaches, selectedTeam));
         }
 
         // POST: TeamController/Edit/5
@@ -79,14 +87,14 @@ namespace VoetbalSpeler.Controllers
         {
             try
             {
-                IClub club = new Club("ijfc");
-
                 string teamname = Convert.ToString(collection["Item2.Teamname"]);
                 string Coach = Convert.ToString(collection["Item2.CoachId"]);
                 string[] words = Coach.Split(' ');
                 int coachId = Int32.Parse(words[0]);
-                Team team = new(id, teamname, coachId);
 
+                team.Id = id;
+                team.Teamname = teamname;
+                team.CoachId = coachId;
                 club.Edit(team);
 
                 return RedirectToAction("Index", "Team");

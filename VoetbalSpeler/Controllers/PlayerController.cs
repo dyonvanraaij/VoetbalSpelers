@@ -10,14 +10,25 @@ namespace VoetbalSpeler.Controllers
 {
     public class PlayerController : Controller
     {
+        private Club club;
+        private TeamContainer teamContainer;
+        private Team team;
+        private Player player;
+
+        public PlayerController(Club club, TeamContainer teamContainer, Team team, Player player)
+        {
+            this.club = club;
+            this.teamContainer = teamContainer;
+            this.team = team;
+            this.player = player;
+        }
         // GET: PlayerController
         public ActionResult Index(int id)
         {
-            IClub club = new Club("ijfc");
-            //Team team = club.GetTeamById(id);
-            ITeam team = club.GetTeamById(id);
-            List<Player> spelers = team.GetPlayersByTeamId(id);
-            return View(Tuple.Create(spelers, team));
+            team.Id = id;
+            Team selectedTeam = club.GetTeamById(team);
+            List<Player> spelers = teamContainer.GetPlayersByTeamId(team);
+            return View(Tuple.Create(spelers, selectedTeam));
         }
 
         // GET: PlayerController/Edit/5
@@ -33,14 +44,15 @@ namespace VoetbalSpeler.Controllers
         {
             try
             {
-                IClub club = new Club("ijfc");
-
                 string firstname = collection["Firstname"];
                 string lastname = collection["Lastname"];
                 string position = collection["Position"];
-                ITeam team = club.GetTeamById(id);
-                Player speler = new(1, firstname, lastname, position, id);
-                team.CreatePlayer(speler);
+                player.Id = 1;
+                player.Firstname = firstname;
+                player.Lastname = lastname;
+                player.Position = position;
+                player.Teamname = id;
+                teamContainer.CreatePlayer(player);
                 return RedirectToAction("Index", "Player", new { id = id });
             }
             catch

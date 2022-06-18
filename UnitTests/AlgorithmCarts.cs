@@ -5,10 +5,11 @@ namespace UnitTests
 {
     public class AlgorithmCarts
     {
+
         [Test]
         public void YellowCart()
         {
-            Player player = new(1, "firstname", "lastname", "keeper", 1);
+            var player = new Player { Id = 1, Firstname = "firstname", Lastname = "lastname", Position = "keeper", Teamname = 1, Ranking_number = 100 };
             Stats stats = new(1, 10, 10, true, 10, 10, 10, 10, 10, 100, 10);
             IRankingStats algorithm = new RankingYellowCarts();
             algorithm.Run(stats, player);
@@ -19,7 +20,7 @@ namespace UnitTests
         [Test]
         public void RedCart()
         {
-            Player player = new(1, "firstname", "lastname", "attack", 1);
+            var player = new Player { Id = 1, Firstname = "firstname", Lastname = "lastname", Position = "attack", Teamname = 1, Ranking_number = 100 };
             Stats stats = new(1, 10, 10, true, 10, 10, 10, 10, 10, 100, 10);
             IRankingStats algorithm = new RankingRedCarts();
             algorithm.Run(stats, player);

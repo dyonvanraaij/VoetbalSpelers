@@ -8,25 +8,25 @@ namespace Dal
 {
     public class PlayerDTO
     {
-        private int id;
-        private string firstname;
-        private string lastname;
-        private string position;
-        private int teamname;
+        public int Id { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Position { get; set; }
+        public int Teamname { get; set; }
 
-        public int GetId() { return id; }
-        public string GetFirstname() { return firstname; }
-        public string GetLastname() { return lastname; }
-        public string GetPosition() { return position; }
-        public int GetTeamname() { return teamname; }
+        //public int GetId() { return Id; }
+        //public string GetFirstname() { return Firstname; }
+        //public string GetLastname() { return Lastname; }
+        //public string GetPosition() { return Position; }
+        //public int GetTeamname() { return Teamname; }
 
-        public PlayerDTO(int id, string firstname, string lastname, string position, int teamname)
-        {
-            this.id = id;
-            this.firstname = firstname;
-            this.lastname = lastname;
-            this.position = position;
-            this.teamname = teamname;
-        }
+        //public PlayerDTO(int id, string firstname, string lastname, string position, int teamname)
+        //{
+        //    this.id = id;
+        //    this.firstname = firstname;
+        //    this.lastname = lastname;
+        //    this.position = position;
+        //    this.teamname = teamname;
+        //}
     }
 }

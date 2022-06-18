@@ -8,27 +8,15 @@ namespace Dal
 {
     public class TeamDTO
     {
-        private int id;
-        private string teamname;
-        private int coachId;
+        public int Id { get; set; }
+        public string Teamname { get; set; }
+        public int CoachId { get; set; }
 
-        public int GetId()
-        {
-            return id;
-        }
-        public string GetTeamname()
-        {
-            return teamname; 
-        }
-        public int GetCoachId()
-        {
-            return coachId; 
-        }
-        public TeamDTO(int id, string teamname, int coachId)
-        {
-            this.id = id;
-            this.teamname = teamname;
-            this.coachId = coachId;
-        }
+        //public TeamDTO(int Id, string Teamname, int CoachId)
+        //{
+        //    this.Id = Id;
+        //    this.Teamname = Teamname;
+        //    this.CoachId = CoachId;
+        //}
     }
 }
